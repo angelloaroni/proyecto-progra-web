@@ -1,0 +1,12 @@
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 2.5rem 5%;
+}
+
+.login-container {
+  max-width: 420px;
+  width: 100%;
+}

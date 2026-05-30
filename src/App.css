@@ -1,0 +1,145 @@
+:root {
+  --ulima-orange: #E35205;
+  --ulima-dark: #222222;
+  --ulima-gray: #f8f9fa;
+  --ulima-light-gray: #e9ecef;
+  --white: #ffffff;
+  --text-main: #333333;
+  --danger: #dc3545;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--ulima-gray);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Utilidades Flexbox */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Layout Principal */
+main {
+  flex: 1;
+  padding: 2.5rem 5%;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Cajas y Contenedores */
+.box {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #e1e4e6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  width: 100%;
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: var(--ulima-dark);
+  border-left: 4px solid var(--ulima-orange);
+  padding-left: 12px;
+}
+
+/* Elementos de Formulario */
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background-color: #fff;
+  color: #495057;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--ulima-orange);
+  box-shadow: 0 0 0 3px rgba(227, 82, 5, 0.15);
+}
+
+/* Botones */
+.btn {
+  background-color: var(--ulima-orange);
+  color: var(--white);
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+  text-align: center;
+}
+
+.btn:hover { background-color: #c94604; }
+
+.btn-secondary { background-color: #6c757d; }
+.btn-secondary:hover { background-color: #5a6268; }
+
+.btn-danger { background-color: var(--danger); }
+.btn-danger:hover { background-color: #bd2130; }
+
+/* Tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5px;
+}
+
+th, td {
+  text-align: left;
+  padding: 14px;
+  border-bottom: 1px solid var(--ulima-light-gray);
+  font-size: 0.95rem;
+}
+
+th {
+  background-color: var(--ulima-light-gray);
+  color: var(--ulima-dark);
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+/* Responsivo */
+@media (max-width: 650px) {
+  .actions { flex-direction: column; }
+}

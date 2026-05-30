@@ -1,0 +1,45 @@
+header {
+  background-color: var(--ulima-dark);
+  color: var(--white);
+  padding: 1.2rem 5%;
+  border-bottom: 5px solid var(--ulima-orange);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+header h1 span {
+  color: var(--ulima-orange);
+}
+
+nav button {
+  background: none;
+  border: none;
+  color: #cccccc;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-left: 20px;
+  padding: 5px 0;
+  transition: color 0.3s;
+}
+
+nav button:hover {
+  color: var(--ulima-orange);
+}
+
+@media (max-width: 650px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  nav button { margin: 0 10px; }
+}

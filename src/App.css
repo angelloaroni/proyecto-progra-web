@@ -23,7 +23,6 @@ body {
   min-height: 100vh;
 }
 
-/* Utilidades Flexbox */
 .flex-center {
   display: flex;
   justify-content: center;
@@ -41,7 +40,6 @@ body {
   flex-direction: column;
 }
 
-/* Layout Principal */
 main {
   flex: 1;
   padding: 2.5rem 5%;
@@ -50,7 +48,6 @@ main {
   margin: 0 auto;
 }
 
-/* Cajas y Contenedores */
 .box {
   background-color: var(--white);
   padding: 2rem;
@@ -68,7 +65,6 @@ h2 {
   padding-left: 12px;
 }
 
-/* Elementos de Formulario */
 input, select, textarea {
   width: 100%;
   padding: 12px;
@@ -87,7 +83,6 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 3px rgba(227, 82, 5, 0.15);
 }
 
-/* Botones */
 .btn {
   background-color: var(--ulima-orange);
   color: var(--white);
@@ -109,7 +104,6 @@ input:focus, select:focus, textarea:focus {
 .btn-danger { background-color: var(--danger); }
 .btn-danger:hover { background-color: #bd2130; }
 
-/* Tablas */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -139,7 +133,6 @@ th {
   font-size: 0.85rem;
 }
 
-/* Responsivo */
 @media (max-width: 650px) {
   .actions { flex-direction: column; }
 }

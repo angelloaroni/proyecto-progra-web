@@ -4,15 +4,3 @@
   gap: 25px;
   width: 100%;
 }
-
-.register-form-row {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.register-form-row input,
-.register-form-row select {
-  flex: 1;
-  min-width: 200px;
-}

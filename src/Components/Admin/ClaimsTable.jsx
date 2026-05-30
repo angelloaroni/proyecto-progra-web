@@ -1,11 +1,11 @@
-import "./Admin.css";
+import "./ClaimsTable.css";
 
-export default function ClaimsTable({ reclamos, onResolver }) {
+const ClaimsTable = ({ reclamos, onResolver }) => {
   return (
-    <div className="box">
+    <div className="claims-table-box">
       <h2>Reclamos Pendientes</h2>
-      <div style={{ overflowX: "auto" }}>
-        <table>
+      <div className="claims-table-wrapper">
+        <table className="claims-table">
           <thead>
             <tr>
               <th>Objeto</th>
@@ -17,7 +17,7 @@ export default function ClaimsTable({ reclamos, onResolver }) {
           <tbody>
             {reclamos.length === 0 ? (
               <tr>
-                <td colSpan="4" style={{ textAlign: "center", color: "#888" }}>
+                <td colSpan="4" className="no-claims-cell">
                   No hay reclamos pendientes
                 </td>
               </tr>
@@ -29,8 +29,7 @@ export default function ClaimsTable({ reclamos, onResolver }) {
                   <td>"{rec.evidencia}"</td>
                   <td className="actions">
                     <button
-                      className="btn"
-                      style={{ backgroundColor: "#28a745" }}
+                      className="btn btn-accept"
                       onClick={() => onResolver(index, true)}
                     >
                       Aceptar
@@ -50,4 +49,6 @@ export default function ClaimsTable({ reclamos, onResolver }) {
       </div>
     </div>
   );
-}
+};
+
+export default ClaimsTable;

@@ -1,11 +1,11 @@
-import "./Admin.css";
+import "./UsersTable.css";
 
-export default function UsersTable({ usuarios, onToggleAcceso }) {
+const UsersTable = ({ usuarios, onToggleAcceso }) => {
   return (
-    <div className="box">
+    <div className="users-table-box">
       <h2>Gestión de Usuarios</h2>
-      <div style={{ overflowX: "auto" }}>
-        <table>
+      <div className="users-table-wrapper">
+        <table className="users-table">
           <thead>
             <tr>
               <th>Código</th>
@@ -20,14 +20,13 @@ export default function UsersTable({ usuarios, onToggleAcceso }) {
                 <td>{usr.codigo}</td>
                 <td>{usr.nombre}</td>
                 <td>
-                  <span style={{ color: usr.activo ? "green" : "red", fontWeight: "bold" }}>
+                  <span className={`user-status ${usr.activo ? "active" : "blocked"}`}>
                     {usr.activo ? "Activo" : "Bloqueado"}
                   </span>
                 </td>
                 <td className="actions">
                   <button
-                    className={`btn ${usr.activo ? "btn-danger" : ""}`}
-                    style={{ width: "130px" }}
+                    className={`btn ${usr.activo ? "btn-danger" : "btn-secondary"} user-action-btn`}
                     onClick={() => onToggleAcceso(index)}
                   >
                     {usr.activo ? "Quitar Acceso" : "Dar Acceso"}
@@ -40,4 +39,6 @@ export default function UsersTable({ usuarios, onToggleAcceso }) {
       </div>
     </div>
   );
-}
+};
+
+export default UsersTable;

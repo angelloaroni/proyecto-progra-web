@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./Admin.css";
+import "./RegisterForm.css";
 
-export default function RegisterForm({ onRegistrar }) {
+const RegisterForm = ({ onRegistrar }) => {
   const [form, setForm] = useState({
     nombre: "",
     categoria: "",
@@ -62,4 +62,6 @@ export default function RegisterForm({ onRegistrar }) {
       </form>
     </div>
   );
-}
+};
+
+export default RegisterForm;

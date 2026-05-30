@@ -1,0 +1,64 @@
+.claims-table-box {
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+}
+
+.claims-table-box h2 {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.claims-table-wrapper {
+  overflow-x: auto;
+}
+
+.claims-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.claims-table th,
+.claims-table td {
+  padding: 0.85rem 1rem;
+  border: 1px solid #e2e8f0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.claims-table thead {
+  background: #f7fafc;
+}
+
+.claims-table th {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.claims-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.no-claims-cell {
+  text-align: center;
+  color: #888;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-accept {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-accept:hover {
+  background-color: #218838;
+}

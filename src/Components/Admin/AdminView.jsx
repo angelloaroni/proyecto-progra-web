@@ -3,7 +3,9 @@ import ClaimsTable from "./ClaimsTable";
 import UsersTable from "./UsersTable";
 import "./Admin.css";
 
-export default function AdminView({ reclamos, usuarios, onRegistrar, onResolver, onToggleAcceso }) {
+
+const AdminView = ({ reclamos, usuarios, onRegistrar, onResolver, onToggleAcceso }) =>{
+
   return (
     <section className="admin-view">
       <RegisterForm onRegistrar={onRegistrar} />
@@ -11,4 +13,7 @@ export default function AdminView({ reclamos, usuarios, onRegistrar, onResolver,
       <UsersTable usuarios={usuarios} onToggleAcceso={onToggleAcceso} />
     </section>
   );
+
 }
+
+export default AdminView;

@@ -1,0 +1,66 @@
+.users-table-box {
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+}
+
+.users-table-box h2 {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.users-table-wrapper {
+  overflow-x: auto;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.users-table th,
+.users-table td {
+  padding: 0.85rem 1rem;
+  border: 1px solid #e2e8f0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.users-table thead {
+  background: #f7fafc;
+}
+
+.users-table th {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.users-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.user-status {
+  font-weight: 700;
+}
+
+.user-status.active {
+  color: #22c55e;
+}
+
+.user-status.blocked {
+  color: #ef4444;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.user-action-btn {
+  width: 130px;
+}

@@ -9,6 +9,18 @@ header {
   align-items: center;
 }
 
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-logo {
+  width: 42px;
+  height: auto;
+  display: block;
+}
+
 header h1 {
   font-size: 1.4rem;
   font-weight: 700;

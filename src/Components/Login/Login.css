@@ -10,3 +10,53 @@
   max-width: 420px;
   width: 100%;
 }
+
+.login-logo {
+  display: block;
+  margin: 0 auto 1.5rem;
+  max-width: 180px;
+  width: auto;
+  object-fit: contain;
+}
+
+.role-group {
+  border: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  text-align: left;
+}
+
+.role-group legend {
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  color: var(--ulima-dark);
+  font-weight: 700;
+}
+
+.role-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--ulima-dark);
+}
+
+.role-group input[type="radio"] {
+  accent-color: var(--ulima-orange);
+  margin: 0;
+  vertical-align: middle;
+}
+
+.login-footer-text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.login-footer-text a {
+  color: var(--ulima-orange);
+  text-decoration: none;
+  font-weight: 700;
+}

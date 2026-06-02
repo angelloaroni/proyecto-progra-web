@@ -44,8 +44,8 @@ main {
   flex: 1;
   padding: 2.5rem 5%;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
 }
 
 .box {

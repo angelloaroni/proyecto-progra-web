@@ -26,7 +26,7 @@ const UsersTable = ({ usuarios, onToggleAcceso }) => {
                 </td>
                 <td className="actions">
                   <button
-                    className={`btn ${usr.activo ? "btn-danger" : "btn-secondary"} user-action-btn`}
+                    className={`btn ${usr.activo ? "btn-danger" : "btn-access"} user-action-btn`}
                     onClick={() => onToggleAcceso(index)}
                   >
                     {usr.activo ? "Quitar Acceso" : "Dar Acceso"}

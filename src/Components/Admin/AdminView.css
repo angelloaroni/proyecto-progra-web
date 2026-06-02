@@ -1,0 +1,47 @@
+.admin-view {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+}
+
+.admin-view h2 {
+  margin: 0 0 8px;
+  color: var(--ulima-dark);
+}
+
+.admin-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.admin-card {
+  background: var(--white);
+  border: 1px solid #e1e4e6;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.admin-card img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.admin-card h3 {
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.admin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}

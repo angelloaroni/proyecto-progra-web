@@ -1,8 +1,8 @@
 import { useState } from "react";
 import ItemCard from "./ItemCard";
-import "./Student.css";
+import "./ItemTable.css";
 
-export default function StudentView({ objetos, onClaim }) {
+export default function ItemTable({ objetos, onClaim, rol, onEdit }) {
   const [query, setQuery] = useState("");
 
   const filtrados = objetos.filter(
@@ -31,7 +31,7 @@ export default function StudentView({ objetos, onClaim }) {
           </p>
         ) : (
           filtrados.map((obj) => (
-            <ItemCard key={obj.id} objeto={obj} onClaim={onClaim} />
+            <ItemCard key={obj.id} objeto={obj} onClaim={onClaim} rol={rol} onEdit={onEdit} />
           ))
         )}
       </div>

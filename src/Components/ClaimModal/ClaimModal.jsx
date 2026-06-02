@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Modal.css";
+import "./ClaimModal.css";
 
 export default function ClaimModal({ itemNombre, onClose, onSubmit }) {
   const [evidencia, setEvidencia] = useState("");

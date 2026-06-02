@@ -1,6 +1,16 @@
 import "./ItemCard.css";
 
-const ItemCard = ({ objeto, onClaim }) => {
+const ItemCard = ({ objeto, onClaim, rol, onEdit }) => {
+  const handleButtonClick = () => {
+    if (rol === "admin") {
+      onEdit(objeto);
+    } else {
+      onClaim(objeto.id, objeto.nombre);
+    }
+  };
+
+  const buttonText = rol === "admin" ? "Editar" : "Reclamar Objeto";
+
   return (
     <div className="item-card">
       <div className="item-image">{objeto.icono}</div>
@@ -10,8 +20,8 @@ const ItemCard = ({ objeto, onClaim }) => {
         <p className="item-description">
           {objeto.descripcion}
         </p>
-        <button className="btn" onClick={() => onClaim(objeto.id, objeto.nombre)}>
-          Reclamar Objeto
+        <button className="btn" onClick={handleButtonClick}>
+          {buttonText}
         </button>
       </div>
     </div>

@@ -2,9 +2,13 @@ import { useState } from "react";
 import { initialObjetos, initialReclamos, initialUsuarios } from "./data/mockData";
 import Header from "./Components/Header/Header";
 import Login from "./Components/Login/Login";
-import StudentView from "./Components/Student/StudentView";
+import ItemTable from "./Components/ItemsPage/ItemTable";
 import AdminView from "./Components/Admin/AdminView";
-import ClaimModal from "./Components/Modal/ClaimModal";
+import RegisterForm from "./Components/RegisterForm/RegisterForm";
+import ClaimsTable from "./Components/ClaimsTable/ClaimsTable";
+import UsersTable from "./Components/UsersTable/UsersTable";
+import ClaimModal from "./Components/ClaimModal/ClaimModal";
+import EditModal from "./Components/EditModal/EditModal";
 import "./App.css";
 
 export default function App() {
@@ -14,6 +18,7 @@ export default function App() {
   const [reclamos, setReclamos] = useState(initialReclamos);
   const [usuarios, setUsuarios] = useState(initialUsuarios);
   const [modal, setModal] = useState({ open: false, itemId: null, itemNombre: "" });
+  const [editModal, setEditModal] = useState({ open: false, item: null });
 
   const handleLogin = (codigo, rol) => {
     setUsuarioActual({ codigo: codigo || "20231456", rol });
@@ -24,6 +29,17 @@ export default function App() {
 
   const openClaimModal = (id, nombre) => setModal({ open: true, itemId: id, itemNombre: nombre });
   const closeClaimModal = () => setModal({ open: false, itemId: null, itemNombre: "" });
+
+  const openEditModal = (item) => setEditModal({ open: true, item });
+  const closeEditModal = () => setEditModal({ open: false, item: null });
+
+  const actualizarObjeto = (objetoActualizado) => {
+    setObjetos((prev) =>
+      prev.map((obj) => (obj.id === objetoActualizado.id ? objetoActualizado : obj))
+    );
+    closeEditModal();
+    alert("Objeto actualizado correctamente.");
+  };
 
   const enviarReclamo = (evidencia) => {
     const objeto = objetos.find((o) => o.id === modal.itemId);
@@ -68,15 +84,26 @@ export default function App() {
       <Header view={view} rol={usuarioActual.rol} onNavigate={setView} onLogout={handleLogout} />
       <main>
         {view === "login" && <Login onLogin={handleLogin} />}
-        {view === "student" && <StudentView objetos={objetos} onClaim={openClaimModal} />}
+        {view === "student" && <ItemTable objetos={objetos} onClaim={openClaimModal} rol={usuarioActual.rol} onEdit={openEditModal} />}
         {view === "admin" && (
           <AdminView
-            reclamos={reclamos}
-            usuarios={usuarios}
-            onRegistrar={registrarObjeto}
-            onResolver={resolverReclamo}
-            onToggleAcceso={toggleAccesoUsuario}
+            onNavigate={setView}
           />
+        )}
+        {view === "admin-register" && (
+          <section className="admin-page">
+            <RegisterForm onRegistrar={registrarObjeto} />
+          </section>
+        )}
+        {view === "admin-claims" && (
+          <section className="admin-page">
+            <ClaimsTable reclamos={reclamos} onResolver={resolverReclamo} />
+          </section>
+        )}
+        {view === "admin-users" && (
+          <section className="admin-page">
+            <UsersTable usuarios={usuarios} onToggleAcceso={toggleAccesoUsuario} />
+          </section>
         )}
       </main>
       {modal.open && (
@@ -84,6 +111,13 @@ export default function App() {
           itemNombre={modal.itemNombre}
           onClose={closeClaimModal}
           onSubmit={enviarReclamo}
+        />
+      )}
+      {editModal.open && (
+        <EditModal
+          item={editModal.item}
+          onClose={closeEditModal}
+          onSubmit={actualizarObjeto}
         />
       )}
     </>

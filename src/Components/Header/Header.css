@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&display=swap');
+
+header {
+  background-color: var(--ulima-dark);
+  color: var(--white);
+  padding: 0 5%;
+  height: 64px;
+  border-bottom: 3px solid var(--ulima-orange);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header-logo {
+  width: 36px;
+  height: auto;
+  display: block;
+  filter: brightness(1.1);
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.header-ulima {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--ulima-orange);
+  letter-spacing: 1px;
+}
+
+.header-divider {
+  color: #444;
+  font-weight: 300;
+}
+
+.header-subtitle {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #bbb;
+  letter-spacing: 0.2px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+nav button {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+nav button:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.07);
+}
+
+nav .logout-btn {
+  background: rgba(227, 82, 5, 0.12);
+  color: var(--ulima-orange);
+  border: 1px solid rgba(227, 82, 5, 0.25);
+  margin-left: 6px;
+}
+
+nav .logout-btn:hover {
+  background: var(--ulima-orange);
+  color: var(--white);
+}
+
+@media (max-width: 650px) {
+  header {
+    height: auto;
+    padding: 14px 5%;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .header-subtitle {
+    display: none;
+  }
+}

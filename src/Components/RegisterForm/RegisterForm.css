@@ -1,0 +1,52 @@
+.register-box {
+  animation: fadeUp 0.3s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.register-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .register-form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ulima-dark);
+  font-family: 'Outfit', sans-serif;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  margin-bottom: 0;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.icon-select-group select {
+  font-size: 1rem;
+}
+
+.publish-btn {
+  align-self: flex-end;
+  min-width: 160px;
+}

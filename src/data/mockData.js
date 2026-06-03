@@ -10,7 +10,7 @@ export const initialReclamos = [
 ];
 
 export const initialUsuarios = [
-  { codigo: "20231456", nombre: "Piero Leon", activo: true },
-  { codigo: "20220890", nombre: "Ana Torres", activo: true },
-  { codigo: "20210055", nombre: "Carlos Flores", activo: false },
+  { codigo: "20231456", nombre: "Piero Leon",    password: "1234", rol: "student", activo: true },
+  { codigo: "20220890", nombre: "Ana Torres",    password: "1234", rol: "student", activo: true },
+  { codigo: "20210055", nombre: "Carlos Flores", password: "1234", rol: "student", activo: false },
 ];

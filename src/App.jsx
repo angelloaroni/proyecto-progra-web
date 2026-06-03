@@ -2,6 +2,7 @@ import { useState } from "react";
 import { initialObjetos, initialReclamos, initialUsuarios } from "./data/mockData";
 import Header from "./Components/Header/Header";
 import Login from "./Components/Login/Login";
+import Register from "./Components/Register/Register";
 import StudentView from "./Components/Student/StudentView";
 import AdminView from "./Components/Admin/AdminView";
 import ClaimModal from "./Components/Modal/ClaimModal";
@@ -9,18 +10,37 @@ import "./App.css";
 
 export default function App() {
   const [view, setView] = useState("login");
-  const [usuarioActual, setUsuarioActual] = useState({ codigo: "20231456", rol: "student" });
+  const [usuarioActual, setUsuarioActual] = useState(null);
   const [objetos, setObjetos] = useState(initialObjetos);
   const [reclamos, setReclamos] = useState(initialReclamos);
   const [usuarios, setUsuarios] = useState(initialUsuarios);
   const [modal, setModal] = useState({ open: false, itemId: null, itemNombre: "" });
 
-  const handleLogin = (codigo, rol) => {
-    setUsuarioActual({ codigo: codigo || "20231456", rol });
-    setView(rol === "admin" ? "admin" : "student");
+  const handleLogin = (codigo, password, rol) => {
+    const usuario = usuarios.find(
+      (u) => u.codigo === codigo && u.password === password && u.rol === rol && u.activo
+    );
+    if (!usuario) return false;
+    setUsuarioActual({ codigo: usuario.codigo, rol: usuario.rol });
+    setView(usuario.rol === "admin" ? "admin" : "student");
+    return true;
   };
 
-  const handleLogout = () => setView("login");
+  const handleRegister = (nuevoUsuario) => {
+    const existe = usuarios.some((u) => u.codigo === nuevoUsuario.codigo);
+    if (existe) {
+      alert("Ya existe un usuario con ese código.");
+      return;
+    }
+    setUsuarios((prev) => [...prev, nuevoUsuario]);
+    alert("¡Cuenta creada correctamente! Ahora puedes iniciar sesión.");
+    setView("login");
+  };
+
+  const handleLogout = () => {
+    setUsuarioActual(null);
+    setView("login");
+  };
 
   const openClaimModal = (id, nombre) => setModal({ open: true, itemId: id, itemNombre: nombre });
   const closeClaimModal = () => setModal({ open: false, itemId: null, itemNombre: "" });
@@ -65,10 +85,28 @@ export default function App() {
 
   return (
     <>
-      <Header view={view} rol={usuarioActual.rol} onNavigate={setView} onLogout={handleLogout} />
+      <Header
+        view={view}
+        rol={usuarioActual?.rol}
+        onNavigate={setView}
+        onLogout={handleLogout}
+      />
       <main>
-        {view === "login" && <Login onLogin={handleLogin} />}
-        {view === "student" && <StudentView objetos={objetos} onClaim={openClaimModal} />}
+        {view === "login" && (
+          <Login
+            onLogin={handleLogin}
+            onGoRegister={() => setView("register")}
+          />
+        )}
+        {view === "register" && (
+          <Register
+            onRegister={handleRegister}
+            onBack={() => setView("login")}
+          />
+        )}
+        {view === "student" && (
+          <StudentView objetos={objetos} onClaim={openClaimModal} />
+        )}
         {view === "admin" && (
           <AdminView
             reclamos={reclamos}

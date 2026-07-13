@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  --ulima-orange: #E35205;
+  --ulima-orange-light: #f06a2a;
+  --ulima-orange-glow: rgba(227, 82, 5, 0.18);
+  --ulima-dark: #111111;
+  --ulima-dark-2: #1a1a1a;
+  --ulima-dark-3: #242424;
+  --ulima-gray: #f5f5f5;
+  --ulima-light-gray: #ebebeb;
+  --ulima-mid-gray: #888888;
+  --white: #ffffff;
+  --text-main: #2a2a2a;
+  --text-muted: #666666;
+  --danger: #dc3545;
+  --success: #22c55e;
+  --border: #e0e0e0;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background-color: var(--ulima-gray);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+main {
+  flex: 1;
+  padding: 2.5rem 5%;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.admin-page {
+  width: 100%;
+}
+
+.box {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+}
+
+h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--ulima-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+h2::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1.2em;
+  background: var(--ulima-orange);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.94rem;
+  background-color: var(--white);
+  color: var(--text-main);
+  transition: border-color 0.18s, box-shadow 0.18s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--ulima-orange);
+  box-shadow: 0 0 0 3px var(--ulima-orange-glow);
+}
+
+input::placeholder, textarea::placeholder {
+  color: #aaa;
+}
+
+.btn {
+  background-color: var(--ulima-orange);
+  color: var(--white);
+  border: none;
+  padding: 11px 22px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.92rem;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.3px;
+  transition: background-color 0.18s, transform 0.1s, box-shadow 0.18s;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: var(--ulima-orange-light);
+  box-shadow: 0 4px 14px rgba(227, 82, 5, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--ulima-light-gray);
+  box-shadow: none;
+  color: var(--text-main);
+}
+
+.btn-danger {
+  background-color: var(--danger);
+}
+
+.btn-danger:hover {
+  background-color: #bd2130;
+  box-shadow: 0 4px 14px rgba(220, 53, 69, 0.3);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5px;
+}
+
+th, td {
+  text-align: left;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--ulima-light-gray);
+  font-size: 0.93rem;
+}
+
+th {
+  background-color: #fafafa;
+  color: var(--ulima-dark);
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--ulima-light-gray);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 650px) {
+  .actions { flex-direction: column; }
+}

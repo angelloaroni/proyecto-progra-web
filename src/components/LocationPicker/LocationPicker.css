@@ -1,0 +1,29 @@
+.location-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.location-picker label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ulima-dark);
+  font-family: "Outfit", sans-serif;
+}
+
+.location-picker-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.location-picker-row select {
+  flex: 1;
+  min-width: 120px;
+}
+
+.location-picker-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+}

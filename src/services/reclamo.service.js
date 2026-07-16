@@ -15,8 +15,8 @@ const crear = async ({ objetoId, evidencia }) => {
   return data;
 };
 
-const resolver = async (id, aprobado) => {
-  const { data } = await axiosClient.put(`/reclamo/${id}/resolver`, { aprobado });
+const resolver = async (id, aprobado, motivoRechazo) => {
+  const { data } = await axiosClient.put(`/reclamo/${id}/resolver`, { aprobado, motivoRechazo });
   return data;
 };
 

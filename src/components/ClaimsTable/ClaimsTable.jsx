@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import reclamoService from "../../services/reclamo.service";
 import getErrorMessage from "../../services/getErrorMessage";
+import ResolverReclamoModal from "../ResolverClaimModal/ResolverClaimModal";
 import "./ClaimsTable.css";
 
 const ClaimsTable = () => {
   const [reclamos, setReclamos] = useState([]);
+  const [reclamoActivo, setReclamoActivo] = useState(null);
 
   const cargarReclamos = async () => {
     try {
@@ -19,11 +21,12 @@ const ClaimsTable = () => {
     cargarReclamos();
   }, []);
 
-  const resolverReclamo = async (id, aprobado) => {
+  const resolverReclamo = async (id, aprobado, motivoRechazo) => {
     try {
-      const response = await reclamoService.resolver(id, aprobado);
+      const response = await reclamoService.resolver(id, aprobado, motivoRechazo);
       alert(response.message);
       if (response.success) {
+        setReclamoActivo(null);
         cargarReclamos();
       }
     } catch (error) {
@@ -55,21 +58,17 @@ const ClaimsTable = () => {
             ) : (
               reclamos.map((rec) => (
                 <tr key={rec.id}>
-                  <td><strong>{rec.objetoNombre}</strong></td>
+                  <td>
+                    <strong>{rec.objetoIcono} {rec.objetoNombre}</strong>
+                  </td>
                   <td><code className="codigo">{rec.alumnoCodigo}</code></td>
                   <td className="evidencia-cell">"{rec.evidencia}"</td>
                   <td className="actions">
                     <button
-                      className="btn btn-accept"
-                      onClick={() => resolverReclamo(rec.id, true)}
+                      className="btn btn-review"
+                      onClick={() => setReclamoActivo(rec)}
                     >
-                      Aceptar
-                    </button>
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => resolverReclamo(rec.id, false)}
-                    >
-                      Rechazar
+                      Revisar
                     </button>
                   </td>
                 </tr>
@@ -78,6 +77,14 @@ const ClaimsTable = () => {
           </tbody>
         </table>
       </div>
+
+      {reclamoActivo && (
+        <ResolverReclamoModal
+          reclamo={reclamoActivo}
+          onClose={() => setReclamoActivo(null)}
+          onResolver={resolverReclamo}
+        />
+      )}
     </div>
   );
 };

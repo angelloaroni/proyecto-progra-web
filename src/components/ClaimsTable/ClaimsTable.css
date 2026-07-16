@@ -84,18 +84,17 @@
 }
 
 .actions .btn {
-  flex: 1;
   min-width: 90px;
   padding: 8px 12px;
   font-size: 0.85rem;
 }
 
-.btn.btn-accept {
-  background-color: #22c55e !important;
+.btn.btn-review {
+  background-color: var(--ulima-orange) !important;
   color: #fff;
 }
 
-.btn.btn-accept:hover {
-  background-color: #16a34a !important;
-  box-shadow: 0 4px 12px rgba(34,197,94,0.3);
+.btn.btn-review:hover {
+  background-color: var(--ulima-orange-light) !important;
+  box-shadow: 0 4px 12px var(--ulima-orange-glow);
 }

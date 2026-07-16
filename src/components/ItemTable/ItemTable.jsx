@@ -5,16 +5,16 @@ import getErrorMessage from "../../services/getErrorMessage";
 import ItemCard from "../ItemCard/ItemCard";
 import ClaimModal from "../ClaimModal/ClaimModal";
 import EditModal from "../EditModal/EditModal";
+import ItemDetailModal from "../ItemDetailModal/ItemDetailModal";
 import "./ItemTable.css";
 
-// rol="student" muestra solo objetos disponibles y permite reclamar.
-// rol="admin" muestra todos los objetos (con su estado) y permite editar.
 const ItemTable = ({ rol }) => {
   const [objetos, setObjetos] = useState([]);
   const [cargando, setCargando] = useState(false);
   const [query, setQuery] = useState("");
   const [modal, setModal] = useState({ open: false, itemId: null, itemNombre: "" });
   const [editItem, setEditItem] = useState(null);
+  const [detailItem, setDetailItem] = useState(null);
 
   const cargarObjetos = async () => {
     setCargando(true);
@@ -49,8 +49,8 @@ const ItemTable = ({ rol }) => {
 
   const handleEditSubmit = async (updatedItem) => {
     try {
-      const { id, nombre, categoria, descripcion, icono } = updatedItem;
-      const response = await objetoService.actualizar(id, { nombre, categoria, descripcion, icono });
+      const { id, nombre, categoria, descripcion, icono, ubicacion } = updatedItem;
+      const response = await objetoService.actualizar(id, { nombre, categoria, descripcion, icono, ubicacion });
       if (response.success) {
         setEditItem(null);
         cargarObjetos();
@@ -62,7 +62,6 @@ const ItemTable = ({ rol }) => {
     }
   };
 
-  // Los alumnos solo deben ver objetos que aún se pueden reclamar.
   const objetosVisibles = rol === "student" ? objetos.filter((o) => o.estado === "disponible") : objetos;
 
   const filtrados = objetosVisibles.filter(
@@ -104,7 +103,14 @@ const ItemTable = ({ rol }) => {
             </div>
           ) : (
             filtrados.map((obj) => (
-              <ItemCard key={obj.id} objeto={obj} onClaim={openClaimModal} rol={rol} onEdit={setEditItem} />
+              <ItemCard
+                key={obj.id}
+                objeto={obj}
+                onClaim={openClaimModal}
+                rol={rol}
+                onEdit={setEditItem}
+                onView={setDetailItem}
+              />
             ))
           )}
         </div>
@@ -121,6 +127,15 @@ const ItemTable = ({ rol }) => {
           item={editItem}
           onClose={() => setEditItem(null)}
           onSubmit={handleEditSubmit}
+        />
+      )}
+      {detailItem && (
+        <ItemDetailModal
+          objeto={detailItem}
+          rol={rol}
+          onClose={() => setDetailItem(null)}
+          onClaim={openClaimModal}
+          onEdit={setEditItem}
         />
       )}
     </>

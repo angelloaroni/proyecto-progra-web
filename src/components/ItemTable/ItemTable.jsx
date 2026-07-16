@@ -15,6 +15,7 @@ const ItemTable = ({ rol }) => {
   const [modal, setModal] = useState({ open: false, itemId: null, itemNombre: "" });
   const [editItem, setEditItem] = useState(null);
   const [detailItem, setDetailItem] = useState(null);
+  const [objetosReclamadosPorMi, setObjetosReclamadosPorMi] = useState(new Set());
 
   const cargarObjetos = async () => {
     setCargando(true);
@@ -28,8 +29,19 @@ const ItemTable = ({ rol }) => {
     }
   };
 
+  const cargarMisReclamos = async () => {
+    if (rol !== "student") return;
+    try {
+      const data = await reclamoService.listarMios();
+      setObjetosReclamadosPorMi(new Set(data.map((r) => r.objetoId)));
+    } catch (error) {
+      console.error("Error al cargar mis reclamos:", getErrorMessage(error));
+    }
+  };
+
   useEffect(() => {
     cargarObjetos();
+    cargarMisReclamos();
   }, []);
 
   const openClaimModal = (id, nombre) => setModal({ open: true, itemId: id, itemNombre: nombre });
@@ -41,6 +53,7 @@ const ItemTable = ({ rol }) => {
       alert(response.message);
       if (response.success) {
         closeClaimModal();
+        cargarMisReclamos();
       }
     } catch (error) {
       alert(getErrorMessage(error, "No se pudo enviar el reclamo."));
@@ -110,6 +123,7 @@ const ItemTable = ({ rol }) => {
                 rol={rol}
                 onEdit={setEditItem}
                 onView={setDetailItem}
+                yaReclamado={objetosReclamadosPorMi.has(obj.id)}
               />
             ))
           )}
@@ -136,6 +150,7 @@ const ItemTable = ({ rol }) => {
           onClose={() => setDetailItem(null)}
           onClaim={openClaimModal}
           onEdit={setEditItem}
+          yaReclamado={objetosReclamadosPorMi.has(detailItem.id)}
         />
       )}
     </>

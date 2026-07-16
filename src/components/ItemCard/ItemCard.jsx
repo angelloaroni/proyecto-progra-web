@@ -1,8 +1,11 @@
 import "./ItemCard.css";
 
-const ItemCard = ({ objeto, onClaim, rol, onEdit, onView }) => {
+const ItemCard = ({ objeto, onClaim, rol, onEdit, onView, yaReclamado }) => {
+  const bloqueado = rol !== "admin" && yaReclamado;
+
   const handleButtonClick = (e) => {
     e.stopPropagation();
+    if (bloqueado) return;
     if (rol === "admin") {
       onEdit(objeto);
     } else {
@@ -10,7 +13,7 @@ const ItemCard = ({ objeto, onClaim, rol, onEdit, onView }) => {
     }
   };
 
-  const buttonText = rol === "admin" ? "✏️ Editar" : "Reclamar Objeto";
+  const buttonText = rol === "admin" ? "✏️ Editar" : bloqueado ? "Ya reclamado" : "Reclamar Objeto";
 
   return (
     <div className="item-card" onClick={() => onView(objeto)}>
@@ -29,9 +32,18 @@ const ItemCard = ({ objeto, onClaim, rol, onEdit, onView }) => {
         {objeto.ubicacion && (
           <p className="item-ubicacion">📍 {objeto.ubicacion}</p>
         )}
-        <button className="btn item-btn" onClick={handleButtonClick}>
+        <button
+          className={`btn item-btn${bloqueado ? " item-btn-disabled" : ""}`}
+          onClick={handleButtonClick}
+          disabled={bloqueado}
+        >
           {buttonText}
         </button>
+        {bloqueado && (
+          <p className="item-ya-reclamado-msg">
+            Ya has reclamado este objeto. No puedes reclamarlo de nuevo.
+          </p>
+        )}
       </div>
     </div>
   );

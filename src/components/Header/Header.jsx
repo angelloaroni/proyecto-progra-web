@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import MyClaimsMenu from "../MyClaimsMenu/MyClaimsMenu";
 import "./Header.css";
 import logo from "../../assets/Universidad_de_Lima_logo.png";
 
@@ -45,6 +46,7 @@ const Header = () => {
               Panel Admin
             </button>
           )}
+          {rol === "student" && <MyClaimsMenu />}
           <button className="logout-btn" onClick={handleLogout}>Cerrar Sesión</button>
         </nav>
       )}

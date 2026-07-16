@@ -111,6 +111,23 @@
   width: 100%;
 }
 
+.item-btn-disabled,
+.item-btn-disabled:hover {
+  background-color: var(--ulima-mid-gray);
+  color: #eee;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.item-ya-reclamado-msg {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--danger);
+  text-align: center;
+  line-height: 1.35;
+}
+
 @media (max-width: 992px) {
   .item-card { width: calc(50% - 10px); }
 }

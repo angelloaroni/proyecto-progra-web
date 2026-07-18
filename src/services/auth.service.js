@@ -2,7 +2,6 @@ import axiosClient from "./axiosClient";
 
 
 
-// POST /auth/login -> { success, message, usuario }
 
 const login = async (codigo, password, rol) => {
 
@@ -14,7 +13,6 @@ const login = async (codigo, password, rol) => {
 
 
 
-// POST /auth/registrar -> { success, message, usuario }
 
 const registrar = async ({ codigo, nombre, password, rol }) => {
 
@@ -26,7 +24,6 @@ const registrar = async ({ codigo, nombre, password, rol }) => {
 
 
 
-// GET /auth/usuarios (admin) -> [{ id, codigo, nombre, rol, activo, totalReclamos, aprobados }]
 
 const listarUsuarios = async () => {
 
@@ -38,7 +35,6 @@ const listarUsuarios = async () => {
 
 
 
-// PUT /auth/usuarios/:id/acceso (admin) -> { success, message, usuario }
 
 const toggleAcceso = async (id) => {
 
